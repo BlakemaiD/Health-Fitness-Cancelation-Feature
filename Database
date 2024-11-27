@@ -25,13 +25,12 @@ public class Database {
     }
 
     //this will help for debugging to view if the methods work
-     public void showMemberships() {
-            for(int i = 0; i < memberships.size(); i++) {
-                Membership membership = memberships.get(i);
-                System.out.println("Barcode: " + membership.getBarcode());
-                System.out.print(", Status: " + membership.getStatus());
-                //System.out.print(", Expiration: " + membership.getExpiration());
-            }
-    
+      public void showMemberships() {
+        for(int i = 0; i < memberships.size(); i++) {
+            Membership membership = memberships.get(i);
+            System.out.println("Barcode: " + membership.getBarcode() + ", Status: " + membership.getStatus());
+            //System.out.print(", Expiration: " + membership.getExpiration());
         }
+
+    
     }
