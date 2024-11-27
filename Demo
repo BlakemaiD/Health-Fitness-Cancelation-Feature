@@ -1,0 +1,17 @@
+public class Demo {
+    public static void main(String[] args) {
+
+        //test out the cancelation
+        Database db = new Database();
+
+        db.addMembership(new Membership(12345,"active"));
+        db.addMembership(new Membership(56789, "active"));
+        db.addMembership(new Membership(45678, "active"));
+        db.addMembership(new Membership(25790, null));
+
+        System.out.println("current memberships");
+        db.showMemberships();
+
+
+    }
+}
