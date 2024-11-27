@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Database {
+
+    private List<Membership> memberships = new ArrayList<>();
+
+    //add new memberships to the Database, used for testing
+    //pre: needs the barcode, status, (optional) expiration //post: add to the list of memberships
+    public void addMembership(Membership membership) {
+        memberships.add(membership);
+    }
+
+
+    //find a membership in the database based on barcode
+    //pre:needs a valid barcode (5 digit number) //post: find corresponding membership
+    public Membership findMembership(int barcode) {
+        for (int i = 0; i < memberships.size(); i++) {
+            if (memberships.get(i).getBarcode() == barcode) {
+                // Return the membership with the barcode
+                return memberships.get(i);
+            }
+        }
+        return null;
+    }
+}
