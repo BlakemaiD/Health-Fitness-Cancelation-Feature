@@ -12,10 +12,16 @@ public class Demo {
          System.out.println("\n***current memberships***");
         db.showMemberships();
 
-        System.out.println("\nCancelings membership with barcode 12345...");
+        System.out.println("\nCanceling membership with barcode 12345...");
         db.cancelMembership(12345);
 
         System.out.println("Show updated memberships");
         db.showMemberships();
+
+        System.out.println("\nCanceling a cancelled membership...barcode 12345 again");
+        db.cancelMembership(12345);
+
+        System.out.println("\nCanceling a membership NOT in the databade...barcode 92347");
+        db.cancelMembership(92347);
     }
 }
