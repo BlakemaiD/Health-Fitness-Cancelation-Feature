@@ -1,0 +1,44 @@
+public class Membership {
+    //this class is for storing current memberships
+
+    private int barcode; //will be a 5 digit code
+    private String status; //inactive, active
+    private String expiration; //the date the membership will end
+
+     public static void main(String[] args) {
+
+    }
+
+    public Membership (int barcode, String status, String expiration) {
+         this.barcode = barcode;
+         this.status = status;
+         this.expiration = expiration;
+    }
+
+    public Membership (int barcode, String status) {
+        this.barcode = barcode;
+        this.status = status;
+    }
+
+    public int getBarcode() {
+         return barcode;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getExpiration() {
+        return expiration;
+    }
+
+    public void cancelMembership() {
+        if (!"canceled".equals(status)) {
+            status = "canceled";
+            System.out.println("Membership canceled.");
+        } else {
+            System.out.println("Membership is already canceled.");
+        }
+    }
+
+}
