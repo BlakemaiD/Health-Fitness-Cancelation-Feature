@@ -14,7 +14,7 @@ public class Database {
 
     //find a membership in the database based on barcode
     //pre:needs a valid barcode (5 digit number) //post: find corresponding membership
-    public Membership findMembership(int barcode) {
+    public Membership fetchMemberData(int barcode) {
         for (int i = 0; i < memberships.size(); i++) {
             if (memberships.get(i).getBarcode() == barcode) {
                 // Return the membership with the barcode
@@ -24,25 +24,23 @@ public class Database {
         return null;
     }
 
-    //this will help for debugging to view if the methods work
-      public void showMemberships() {
+    //this will cancel the membership based on the barcode, will call to the membership class for the status
+    //pre:needs a barcode to check the membership in the database
+    //post: if membership is found, will cancel the membership, if not then membership is not in the system/invalid
+    public void cancelMembership(int barcode) {
+        Membership custMembership =  fetchMemberData(barcode);
+        if (custMembership != null) {
+            custMembership.updateMembershipStatus();
+        } else {
+            System.out.println("Barcode: " + barcode + " is invalid");
+        }
+    }
+
+    public void showMemberships() {
         for(int i = 0; i < memberships.size(); i++) {
             Membership membership = memberships.get(i);
             System.out.println("Barcode: " + membership.getBarcode() + ", Status: " + membership.getStatus());
             //System.out.print(", Expiration: " + membership.getExpiration());
         }
     }
-
-    //this will cancel the membership based on the barcode, will call to the membership class for the status
-        //pre:needs a barcode to check the membership in the database
-        //post: if membership is found, will cancel the membership, if not then membership is not in the system/invalid
-        public void cancelMembership(int barcode) {
-            Membership custMembership =  findMembership(barcode);
-            if (custMembership != null) {
-                custMembership.cancelMembership();
-            } else {
-                System.out.println("Barcode: " + barcode + " is invalid");
-            }
-    
-        }
 }
