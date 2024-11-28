@@ -1,5 +1,4 @@
 public class Membership {
-    //this class is for storing current memberships
 
     private int barcode; //will be a 5 digit code
     private String status; //inactive, active
@@ -32,13 +31,12 @@ public class Membership {
         return expiration;
     }
 
-    public void cancelMembership() {
+    public void updateMembershipStatus() {
         if (!"canceled".equals(status)) {
             status = "canceled";
-            System.out.println("Membership canceled.");
+            System.out.println("Membership canceled."); //this will act as a response from the "system"
         } else {
             System.out.println("Membership is already canceled.");
         }
     }
-
 }
