@@ -1,8 +1,13 @@
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Membership {
 
     private int barcode; //will be a 5 digit code
     private String status; //inactive, active
-    private String expiration; //the date the membership will end
+    //private String expiration; //the date the membership will end
+    private List<LocalDateTime> checkIns; //keep check-in times
 
      public static void main(String[] args) {
 
@@ -11,7 +16,8 @@ public class Membership {
     public Membership (int barcode, String status, String expiration) {
          this.barcode = barcode;
          this.status = status;
-         this.expiration = expiration;
+         //this.expiration = expiration;
+         this.checkIns = new ArrayList<>();
     }
 
     public Membership (int barcode, String status) {
@@ -39,4 +45,17 @@ public class Membership {
             System.out.println("Membership is already canceled.");
         }
     }
+
+    // Log a check-in 
+    public void logCheckIn() {
+        LocalDateTime now = LocalDateTime.now();
+        checkIns.add(now);
+        System.out.println("Check-in logged for Barcode: " + barcode + " at " + now);
+    }
+
+    // Retrieve check-in history
+    public List<LocalDateTime> getCheckInHistory() {
+        return checkIns;
+    }
+
 }
