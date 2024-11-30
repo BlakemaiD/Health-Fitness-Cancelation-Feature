@@ -54,4 +54,23 @@ public class Database {
             //System.out.print(", Expiration: " + membership.getExpiration());
         }
     }
+
+    // Log a check-in //testing!!!
+    public void logCheckIn(int barcode) {
+        for (Membership membership : memberships) {
+            if (membership.getBarcode() == barcode) {
+                membership.logCheckIn();
+                return;
+            }
+        }
+        System.out.println("Barcode not found. Please sign up.");
+    }
+
+    // Show all check-in logs
+    public void showCheckIns() {
+        for (Membership membership : memberships) {
+            System.out.println("Membership Barcode: " + membership.getBarcode());
+            System.out.println("Check-in History: " + membership.getCheckInHistory());
+        }
+    }
 }
