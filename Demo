@@ -23,5 +23,21 @@ public class Demo {
 
         System.out.println("\nCanceling a membership NOT in the databade...barcode 92347");
         db.cancelMembership(92347);
+
+        //test check-in through User side! Through current and non-current members
+        //this will test if the system allows a User in, Imagine you are the user presenting a barcode
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\n***Welcome to SoftEng. Club! Enter your barcode below!");
+        System.out.print("Enter your barcode: ");
+        int barcode = scanner.nextInt();
+
+        if (db.verifyBarcode(barcode)) {
+            System.out.println("Barcode found! Enter");
+            //String id = scanner.next(); //use only if we go deeper into creating
+            //System.out.println("ID received: " + id);
+        } else {
+            System.out.println("Invalid! Would you like to renew your membership?");
+        }
     }
 }
