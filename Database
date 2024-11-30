@@ -11,6 +11,17 @@ public class Database {
         memberships.add(membership);
     }
 
+    //to check if the membership is able to enter via barcode
+    //pre: show barcode (take in 5 digit number)
+    //post: will return true or false, if the barcode is in the system, prompting allowed entry or not
+    public boolean verifyBarcode(int barcode){
+        for (int i = 0; i < memberships.size(); i++) {
+            if (memberships.get(i).getBarcode() == barcode) {
+                return true;
+            }
+         }
+         return false;
+    }
 
     //find a membership in the database based on barcode
     //pre:needs a valid barcode (5 digit number) //post: find corresponding membership
